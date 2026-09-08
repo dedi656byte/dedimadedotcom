@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useSendContactMessage } from '@workspace/api-client-react';
 import { Activity, ArrowUpRight, BarChart3, Bot, CandlestickChart, Check, ChevronLeft, ChevronRight, Globe2, Menu, Send, X } from 'lucide-react';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -134,8 +135,12 @@ function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [activePrice, setActivePrice] = useState(0);
   const [testimonial, setTestimonial] = useState(0);
+  const [email, setEmail] = useState('');
+  const [projectType, setProjectType] = useState('');
   const [message, setMessage] = useState('');
+  const [formError, setFormError] = useState('');
   const dialogRef = useRef<HTMLDivElement>(null);
+  const sendContactMessage = useSendContactMessage();
 
   useEffect(() => {
     document.title = 'DEDIMADE — Trading algorithmique sur mesure';
@@ -171,7 +176,10 @@ function Home() {
 
   const openModal = () => {
     setSubmitted(false);
+    setEmail('');
+    setProjectType('');
     setMessage('');
+    setFormError('');
     setModalOpen(true);
     setMobileOpen(false);
   };
@@ -185,7 +193,14 @@ function Home() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    setFormError('');
+    sendContactMessage.mutate(
+      { data: { email, projectType, message } },
+      {
+        onSuccess: () => setSubmitted(true),
+        onError: () => setFormError('Le message n’a pas pu être envoyé. Réessayez dans quelques instants.'),
+      },
+    );
   };
 
   return (
@@ -363,12 +378,13 @@ function Home() {
                 <span className="eyebrow">CONTACT / START A CONVERSATION</span>
                 <h2 id="contact-title">Parlez nous de votre projet</h2>
                 <form className="form-stack" onSubmit={handleSubmit}>
-                  <label className="form-label">Votre Adresse Email<input className="form-input" id="client_email" name="client_email" type="email" placeholder="vous@exemple.fr" required data-testid="input-email" /></label>
-                  <label className="form-label">Le Type de Votre Projet<select className="form-select" name="projet_type" defaultValue="" required data-testid="select-project-type"><option value="" disabled>Le Type de Votre Projet</option>{projectOptions.map((option) => <option value={option} key={option}>{option}</option>)}</select></label>
+                  <label className="form-label">Votre Adresse Email<input className="form-input" id="client_email" name="client_email" type="email" placeholder="vous@exemple.fr" required value={email} onChange={(event) => setEmail(event.target.value)} data-testid="input-email" /></label>
+                  <label className="form-label">Le Type de Votre Projet<select className="form-select" name="projet_type" value={projectType} onChange={(event) => setProjectType(event.target.value)} required data-testid="select-project-type"><option value="" disabled>Le Type de Votre Projet</option>{projectOptions.map((option) => <option value={option} key={option}>{option}</option>)}</select></label>
                   <label className="form-label">Expliquez nous votre projet ici...<textarea className="form-textarea" id="message" name="message" rows={7} placeholder="Expliquez nous votre projet ici..." required maxLength={4070} value={message} onChange={(event) => setMessage(event.target.value)} data-testid="input-project-message" /></label>
                   <div className="form-help"><span><strong>{4070 - message.length}</strong> caractères restants</span><span>Maximum 4070 caractères</span></div>
                   <p className="form-note"><strong>Seuls les caractères standards sont autorisés (pas d’émojis, symboles spéciaux, etc.).</strong></p>
-                  <button className="lime-button submit-button" type="submit" data-testid="button-submit-contact">Envoyer <Send size={16} /></button>
+                  {formError && <p className="form-error" role="alert">{formError}</p>}
+                  <button className="lime-button submit-button" type="submit" disabled={sendContactMessage.isPending} data-testid="button-submit-contact">{sendContactMessage.isPending ? 'Envoi en cours…' : 'Envoyer'} <Send size={16} /></button>
                 </form>
               </>
             ) : (
