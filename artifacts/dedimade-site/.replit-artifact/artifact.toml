@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "DEDIMADE"
+description = "Site vitrine statique de DEDIMADE, une équipe spécialisée dans la création de robots de trading, d'indicateurs et de dashboards personnalisés."
+version = "1.0.0"
+id = "artifacts/dedimade-site"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18936
+
+[services.development]
+run = "pnpm --filter @workspace/dedimade-site run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/dedimade-site", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/dedimade-site/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18936"
+BASE_PATH = "/"

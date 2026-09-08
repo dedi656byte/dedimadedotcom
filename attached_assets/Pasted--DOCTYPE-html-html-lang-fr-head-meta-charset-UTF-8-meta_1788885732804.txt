@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DEDIMADE</title>
+	<meta name="description" content="Nous sommes une équipe de développeurs spécialisés dans le trading algorithmique sur, tradingview, coinbase,  MetaTrader 4/5 etc... Notre mission : automatiser vos stratégies pour vous libérer du temps et vous permettre de profiter pleinement de votre vie, tout en générant des revenus. En collaboration avec des traders expérimentés, nous concevons des robots de trading sur mesure, stables, précis et efficaces. Que vous souhaitiez gagner en liberté, éviter les erreurs humaines ou ne plus rater d’opportunités, nous transformons votre stratégie en un bot fiable et performant." />
+	<meta name="keywords" content="bot,trading, robot, tradingview, metatrader, indicateur, automatiser, stratégie, trading bot, robot de trading, automatiser stratégie" />
+	<meta name="author" content="dedimade" />
+	<!-- Favicons (created with http://realfavicongenerator.net/)-->
+	<link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='img/favicons/logo_dedimade_blanc.jpg') }}">
+	<link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='img/favicons/logo_dedimade_blanc.jpg') }}">
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicons/logo_dedimade_blanc.jpg') }}" sizes="32x32">
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicons/logo_dedimade_blanc.jpg') }}" sizes="16x16">
+	<link rel="manifest" href="{{ url_for('static', filename='img/favicons/manifest.json') }}">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/favicons/logo_dedimade_blanc_50.png') }}">
+	<meta name="msapplication-TileColor" content="#00a8ff">
+	<meta name="msapplication-config" content="{{ url_for('static', filename='img/favicons/browserconfig.xml') }}">
+	<meta name="theme-color" content="#ffffff">
+	<!-- Normalize -->
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+	<!-- Owl -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/owl.css') }}">
+	<!-- Loader -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/loader.css') }}">
+	<!-- Animate.css -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animate.css') }}">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.1.0/css/font-awesome.min.css') }}">
+	<!-- Elegant Icons -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/eleganticons/et-icons.css') }}">
+	<!-- Main style -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/cardio.css') }}">
+	<!-- Notifications style -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/notifs_ui.css') }}">
+	   
+	<script src="{{ url_for('static', filename='js/formulaire.js') }}"></script>
+
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GCVXVBR7Q2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GCVXVBR7Q2');
+</script>
+
+<body>
+
+	<div class="preloader">
+		<!--<div class="loader"></div>-->
+		<img src="{{ url_for('static', filename='img/Spinning line.gif') }}" alt="trading bot">
+	</div>
+
+	<nav class="navbar">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<span>
+
+				<a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='dedimade_images/logo_dedimade_noir_transparant_50.png') }}" data-active-url="{{ url_for('static', filename='dedimade_images/logo_dedimade_noir_transparant_50.png') }}" alt=""></a><span style="font-size: 35px;" class="black"><b><span class="typed-cursor1">D</span><span class="typed-cursor2">E</span><span class="typed-cursor3">D</span><span class="typed-cursor4">I</span><span class="typed-cursor5">M</span><span class="typed-cursor6">A</span><span class="typed-cursor7">D</span><span class="typed-cursor8">E</span></b></span></span>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right main-nav">
+					<li><a href="#intro"><span class="black">Acceuil</span></a></li>
+					<li><a href="#services"><span class="black">Nos Services</span></a></li>
+					<li><a href="#team"><span class="black">Notre Equipe</span></a></li>
+					<li><a href="#pricing"><span class="black">Nos Tarifs</span></a></li>
+					<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-black">Parlez nous de votre projet</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	{% if request.args.get('msg') == 'envoye' %}
+    <div id="toast-container2" class="toast-container2">
+        Nous avons recu votre message, nous vous repondrons dès que possible !
+    </div>
+
+    <script>
+        setTimeout(() => {
+            const toast = document.getElementById('toast-container2');
+            if (toast) {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 1000); // le retire complètement après le fondu
+            }
+        }, 8000); // 3 secondes avant de commencer à disparaître
+    </script>
+{% endif %}
+
+	<div id="toast-container"></div>
+	<header id="intro">
+		<div class="container">
+			<div class="table">
+				<div class="header-text">
+					<div class="row">
+						<div class="col-md-12 text-left">
+							<h3 class="black typed">
+							Nous sommes une équipe de développeurs experts en trading algorithmique, dont la mission est de transformer vos idées en robots rentables, indicateurs précis et tableaux de bord efficaces.
+                            Fini les opportunités manquées et les tâches répétitives : grâce à nos services, prenez le contrôle, nous vous accompagnons à chaque étape.
+                            Confiez-nous votre vision, nous nous occupons de tout.</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="cut cut-top"></div>
+		<div class="container">
+			<div class="row intro-tables">
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="services" class="section section-padded">
+		<div class="container">
+			<div class="row text-center title">
+				<h2>Nos Services</h2>
+				<h4 class="light muted">Optimisez vos performances de trading grâce à nos services de création et de modification de robots, d’indicateurs personnalisés et de tableaux de bord !</h4>
+			</div>
+			<div class="row services">
+				<div class="col-md-4">
+					<div class="service">
+						<div class="icon-holder">
+							<img src="{{ url_for('static', filename='dedimade_images/icons/robot.png') }}" alt="trading bot" class="icon">
+						</div>
+						<h4 class="heading">Robot metatrader 4/5 et tradingview</h4>
+						<p class="description">Dans ce service nous vous proposons de créer votre robot sur mésure pour les plateformes Metatrader 4/5 et tradingview.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="service">
+						<div class="icon-holder">
+							<img src="{{ url_for('static', filename='dedimade_images/icons/indicateurs.png') }}" alt="" class="icon">
+						</div>
+						<h4 class="heading">Indicateur et dashboard metatrader 4/5 et tradingview</h4>
+						<p class="description">Dans ce service nous vous proposons de créer votre Indicateur personnalisé ou votre dashboard pour les plateformes Metatrader 4/5 et tradingview.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="service">
+						<div class="icon-holder">
+							<img src="{{ url_for('static', filename='dedimade_images/icons/bitcoin.png') }}" alt="" class="icon">
+						</div>
+						<h4 class="heading">Robot de trading crypto</h4>
+						<p class="description">Dans ce service nous vous proposons de créer votre robot sur mésure pour les plateformes nécessitant une application web, des plateformes comme Coinbase, Binance, Bybit etc... </p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cut cut-bottom"></div>
+	</section>
+	<section id="team" class="section gray-bg">
+		<div class="container">
+			<div class="row title text-center">
+				<h2 class="margin-top">Notre équipe</h2>
+				<h4 class="light muted">Juste la partie visible de l'iceberg !</h4>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover" style="background:url('{{ url_for('static', filename='dedimade_images/bg/bg_manager.png') }}'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">David</h3>
+								<h5 class="light white">Autodidacte en programmation, en trading algorithmique et diplomé en E-commerce et Marketing Digital, Initiateur et manager de l'équipe.</h5>
+							</div>
+						</div>
+						<img src="{{ url_for('static', filename='dedimade_images/equipe/dedi.png') }}" alt="trading bot" class="avatar">
+						<div class="title">
+							<h4>Dedi David</h4>
+							<h5 class="muted regular">Programmeur MQL4, MQL5, Pinescript, Python, Community Manager et Manager General.</h5>
+						</div>
+						<!--<button data-toggle="modal" data-target="#modal1" class="btn btn-black-fill">Sign Up Now</button>-->
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover" style="background:url('{{ url_for('static', filename='dedimade_images/bg/bg_programmation.jpg') }}'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">Samuel</h3>
+								<h5 class="light white">Est Diplomé en Génie Logiciel, développement web et Big data, pur produit d'une grande école d'ingénieur.</h5>
+							</div>
+						</div>
+
+						<img src="{{ url_for('static', filename='dedimade_images/equipe/sam.png') }}" alt="trading bot" class="avatar">
+						<div class="title">
+							<h4>Silué Samuel</h4>
+							<h5 class="muted regular">Ingénieur Logiciel et developpeur web.</h5>
+						</div>
+						<!--<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-black-fill ripple">Sign Up Now</a>-->
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover" style="background:url('{{ url_for('static', filename='dedimade_images/bg/trading.png') }}'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">Jonathan</h3>
+								<h5 class="light white">Est un client qui est devenue menbre de l'équipe, en tant que consultant en stratégie de trading.</h5>
+							</div>
+						</div>
+						<img src="{{ url_for('static', filename='dedimade_images/equipe/jonathan.png') }}" alt="trading bot" class="avatar">
+						<div class="title">
+							<h4>Jonathan Levrien</h4>
+							<h5 class="muted regular">Trader Professionel.</h5>
+						</div>
+						<!--<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-black-fill ripple">Sign Up Now</a>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row title text-center">
+				<h4 class="light muted">Et bien d'autre menbres, au total nous sommes plus d'une trentaine à travers le monde à travailler sur vos projets. <img src="{{ url_for('static', filename='dedimade_images/icons/terre.png') }}" alt="trading bot" class="icon" height="25 px" width="25 px"></h4>
+			</div>
+	</section>
+	<section id="pricing" class="section">
+		<div class="container">
+			<div class="row title text-center">
+				<h2 class="margin-top white">Nos Tarifs</h2>
+				<h4 class="light white">Les tarifs dépendent des exigeances de vos projets.</h4>
+			</div>
+			<div class="row no-margin">
+				<div class="col-md-7 no-padding col-md-offset-5 pricings text-center">
+					<!--******************************************************************************************-->
+					<div class="pricing">
+						<div class="box-main active" data-img="{{ url_for('static', filename='dedimade_images/bg/robot.jpeg') }}">
+							<h5 class="white"><b>Robot de trading MT4/MT5 & TV</b></h5>
+							<h5 class="white regular light">Création à partir de <span class="small-font"><b>100 €</b></span></h5>
+							<h5 class="white regular light">Modification à partir de <span class="small-font"><b>20 €</b></span></h5>
+							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Parlez nous de votre projet</a>
+							<i class="info-icon icon_question"></i>
+						</div>
+						<div class="box-second active">
+							<h6 class="white"><b>Vous aurez un robot de trading :</b></h6>
+							<ul class="white-list text-left">
+								<li>fidèle à votre stratégie.</li>
+								<li>avec une optimisation poussée.</li>
+								<li>une assistance complète après la conception du robot.</li>
+							</ul>
+						</div>
+					</div>
+					<!--******************************************************************************************-->
+					<div class="pricing">
+						<div class="box-main" data-img="{{ url_for('static', filename='dedimade_images/bg/indicateur.jpg') }}">
+							<h4 class="white">Indicateur & Dashboard personnalisé</h4>
+							<h5 class="white regular light">Création à partir de <span class="small-font"><b>100 €</b></span></h5>
+							<h5 class="white regular light">Modification à partir de <span class="small-font"><b>20 €</b></span></h5>
+							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Parlez nous de votre projet</a>
+							<i class="info-icon icon_question"></i>
+						</div>
+						<div class="box-second">
+							<h6 class="white"><b>Vous aurez un indicateur / un dashboard :</b></h6>
+							<ul class="white-list text-left">
+								<li>fidèle à vos descriptions.</li>
+								<li>avec une optimisation poussée.</li>
+								<li>une assistance complète après la réalisation de votre projet.</li>
+							</ul>
+						</div>
+					</div>
+					<!--******************************************************************************************-->
+					<div class="pricing">
+						<div class="box-main" data-img="{{ url_for('static', filename='dedimade_images/bg/dashboard.png') }}">
+							<h4 class="white">Robot crypto</h4>
+							<h5 class="white regular light">Création à partir de <span class="small-font"><b>100 €</b></span></h5>
+							<h5 class="white regular light">Modification à partir de <span class="small-font"><b>20 €</b></span></h5>
+							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Parlez nous de votre projet</a>
+							<i class="info-icon icon_question"></i>
+						</div>
+						<div class="box-second">
+							<h6 class="white"><b>Vous aurez un robot de trading de crypto:</b></h6>
+							<ul class="white-list text-left">
+								<li>fidèle à votre stratégie.</li>
+								<li>avec une optimisation poussée.</li>
+								<li>une assistance complète après la conception du robot.</li>
+							</ul>
+						</div>
+					</div>
+					<!--******************************************************************************************-->
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section  black-bg">
+		<h3 class=" white text-center">Témoignages clients</h3>
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-8 col-md-offset-2">
+					<div class="owl-twitter owl-carousel">
+						<div class="item text-center">
+							<!--<i class="icon fa fa-twitter"></i>-->
+							<img src="{{ url_for('static', filename='dedimade_images/avis/avis_4.png') }}" alt="FabVins,très satisfait comme d'habitude et très professionnel travail rapide et bien fait"><br>
+						</div>
+						<div class="item text-center">
+							<!--<i class="icon fa fa-twitter"></i>-->
+							<img src="{{ url_for('static', filename='dedimade_images/avis/avis_1.png') }}" alt=""><br>
+						</div>
+						<div class="item text-center">
+							<!--<i class="icon fa fa-twitter"></i>-->
+							<img src="{{ url_for('static', filename='dedimade_images/avis/avis_2.png') }}" alt=""><br>
+						</div>
+
+
+						<div class="item text-center">
+							<!--<i class="icon fa fa-twitter"></i>-->
+							<img src="{{ url_for('static', filename='dedimade_images/avis/avis_3.png') }}" alt=""><br>
+						</div>
+						<div class="item text-center">
+							<!--<i class="icon fa fa-twitter"></i>-->
+							<img src="{{ url_for('static', filename='dedimade_images/avis/avis_5.png') }}" alt=""><br>
+						</div>
+						<div class="item text-center">
+							<!--<i class="icon fa fa-twitter"></i>-->
+							<img src="{{ url_for('static', filename='dedimade_images/avis/avis_6.png') }}" alt=""><br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+		<h1 class="white text-center"><a href="https://comeup.com/fr/@dedi-david" target="_blank"  >cliquez ici pour voire tous les témoignages</a></h1>
+
+	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<h3 class="white">Parlez nous de votre projet</h3>
+				<!--A revoir -->
+				<form action="{{ url_for('send_email') }}"  method="POST" class="popup-form" onsubmit="return validerFormulaire(event)" >
+				<!--A revoir -->
+					<input id="client_email" name="client_email" type="text" class="form-control form-white" placeholder="Votre Adresse Email" required>
+					<input type="hidden" name="projet_type" id="projet_type" required>
+					<div class="dropdown">
+						<button id="dLabel" name="dLabel" class="form-control form-white dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Le Type de Votre Projet
+						</button>
+						<ul class="dropdown-menu animated fadeIn" role="menu" aria-labelledby="dLabel">
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Création de Robot MT4')">Création de Robot MT4</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Création de Robot MT5')">Création de Robot MT5</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Création de Robot Tradingview')">Création de Robot Tradingview</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Création d\'indicateur MT4')">Création d'indicateur MT4</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Création d\'indicateur MT5')">Création d'indicateur MT5</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Création d\'indicateur Tradingview')">Création d'indicateur Tradingview</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Modification de robot MT4')">Modification de robot MT4</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Modification de robot MT5')">Modification de robot MT5</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Modification de robot Tradingview')">Modification de robot Tradingview</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Modification d\'indicateur MT4')">Modification d'indicateur MT4</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Modification d\'indicateur MT5')">Modification d'indicateur MT5</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Modification d\'indicateur Tradingview')">Modification d'indicateur Tradingview</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Création de Robot de Trading de crypto')">Création de Robot de Trading de crypto</a></li>
+							<li class="animated lightSpeedIn"><a href="#" onclick="selectProjet('Modification de Robot de Trading de crypto')">Modification de Robot de Trading de crypto</a></li>
+						</ul>
+					</div>
+					<textarea id="message" class="form-control form-white" name="message" rows="10" cols="45" placeholder="Expliquez nous votre projet ici..." required maxlength="4070"></textarea>
+					<div class="checkbox-holder text-center">
+						<div class="char-count">
+                	<span id="remaining-chars">{{ remaining_chars }}</span> caractères restants
+            		</div>
+					</div>
+					<h6 class="white"><b>Seuls les caractères standards sont autorisés (pas d’émojis, symboles spéciaux, etc.).</b></h6>
+					<button type="submit" class="btn btn-submit">Envoyer</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 text-center-mobile">
+					<!--<h3 class="white">Passez votre commande pour gagner en productivité</h3>-->
+					<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-black ripple trial-button Ombre-Blanche" >Parlez nous de votre projet</a>
+				</div>
+			<div class="row bottom-footer text-center-mobile">
+				<div class="col-sm-8">
+					<p>&copy; 2025 All Rights Reserved. Powered by <b style="color:white">DEDIMADE</b><span class="open-blink"></span></p>
+				</div>
+				<div class="col-sm-4 text-right text-center-mobile">
+					<ul class="social-footer">
+						<li><a href="https://www.facebook.com/61566334743542/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="https://x.com/dedimade187641" target="_blank"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="https://www.reddit.com/user/CauliflowerOdd4048/" target="_blank"><i class="fa fa-reddit"></i></a></li>
+						<li><a href="https://www.youtube.com/@dedimade827" target="_blank"><i class="fa fa-youtube"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Holder for mobile navigation -->
+	<div class="mobile-nav">
+		<ul>
+		</ul>
+		<a href="#" class="close-link"><i class="arrow_up"></i></a>
+	</div>
+
+	<!-- Scripts -->
+	<script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/typewriter.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.onepagenav.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/delete_empty_form.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/selectProjet.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/remainingChars.js') }}"></script>
+
+</body>
+
+</html>
