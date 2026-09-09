@@ -20,7 +20,15 @@ serve = "static"
 publicDir = "artifacts/dedimade-site/dist/public"
 
 [[services.production.rewrites]]
-from = "/*"
+from = "/a-propos"
+to = "/index.html"
+
+[[services.production.rewrites]]
+from = "/contact"
+to = "/index.html"
+
+[[services.production.rewrites]]
+from = "/confidentialite"
 to = "/index.html"
 
 [services.env]

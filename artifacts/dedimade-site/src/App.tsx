@@ -24,6 +24,9 @@ import { ErrorBoundary } from "@/components/error-boundary";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
+import About from "@/pages/about";
+import Contact from "@/pages/contact";
+import Privacy from "@/pages/privacy";
 import { Route, Switch, useLocation, Router as WouterRouter } from "wouter";
 
 const queryClient = new QueryClient();
@@ -190,7 +193,7 @@ function Home() {
     document.documentElement.lang = "fr";
     setMeta(
       "description",
-      "Nous sommes une équipe de développeurs spécialisés dans le trading algorithmique sur tradingview, coinbase, MetaTrader 4/5 etc... Notre mission : automatiser vos stratégies.",
+      "Créez des robots de trading, indicateurs et dashboards sur mesure pour MetaTrader 4/5, TradingView et crypto. Automatisez votre stratégie avec DEDIMADE.",
     );
     setMeta(
       "keywords",
@@ -200,7 +203,7 @@ function Home() {
     setProperty("og:title", "DEDIMADE — Trading algorithmique sur mesure");
     setProperty(
       "og:description",
-      "Transformez vos idées en robots rentables, indicateurs précis et tableaux de bord efficaces.",
+      "Créez des robots de trading, indicateurs et dashboards sur mesure pour MetaTrader 4/5, TradingView et crypto. Automatisez votre stratégie avec DEDIMADE.",
     );
     setProperty("og:type", "website");
     setProperty("og:url", window.location.href);
@@ -671,8 +674,7 @@ function Home() {
               <h2 id="testimonials-title">Témoignages clients</h2>
               <p>
                 Des retours clients sont disponibles sur notre profil public
-                ComeUp. Consultez-les directement, sans sélection ni
-                reformulation.
+                ComeUp. Consultez-les directement.
               </p>
             </div>
             <div
@@ -752,6 +754,21 @@ function Home() {
               <span className="powered">DEDIMADE</span>
             </p>
             <ul className="socials">
+              <li>
+                <a href="/a-propos" data-testid="link-about">
+                  À propos
+                </a>
+              </li>
+              <li>
+                <a href="/contact" data-testid="link-contact-page">
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="/confidentialite" data-testid="link-privacy">
+                  Confidentialité
+                </a>
+              </li>
               <li>
                 <a
                   href="https://www.facebook.com/61566334743542/"
@@ -943,6 +960,9 @@ function Router() {
     <RoutedErrorBoundary>
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/a-propos" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/confidentialite" component={Privacy} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>

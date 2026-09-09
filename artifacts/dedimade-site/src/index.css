@@ -321,3 +321,12 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+.legal-section { padding: 175px 0 120px; background: #f2f3ed; min-height: 70vh; }
+.legal-content { max-width: 720px; }
+.legal-content h1 { margin: 16px 0 28px; color: #101820; font-size: clamp(2.4rem, 5vw, 4rem); line-height: .98; letter-spacing: -.06em; font-weight: 700; }
+.legal-content h2 { margin: 38px 0 12px; color: #101820; font-size: 1.35rem; letter-spacing: -.03em; }
+.legal-content p { margin: 0 0 16px; color: #4e5a5e; font-size: 1rem; line-height: 1.7; }
+.legal-content ul { margin: 0 0 16px; padding-left: 20px; color: #4e5a5e; font-size: 1rem; line-height: 1.7; }
+.legal-content a { color: #101820; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.legal-content .ghost-button, .legal-content .lime-button { margin-top: 12px; }
