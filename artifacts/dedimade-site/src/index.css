@@ -97,8 +97,9 @@ a { color: inherit; text-decoration: none; }
 .site-header.scrolled { padding: 11px 0; background: rgba(242,243,237,.88); border-bottom: 1px solid rgba(16,24,32,.12); backdrop-filter: blur(18px); }
 .nav-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.04em; }
-.brand-mark { width: 35px; height: 35px; border-radius: 11px 11px 11px 3px; display: grid; place-items: center; background: #c6f36b; color: #101820; transform: rotate(-8deg); }
+.brand-mark { width: 35px; height: 35px; border-radius: 11px 11px 11px 3px; display: grid; place-items: center; overflow: hidden; background: #c6f36b; color: #101820; transform: rotate(-8deg); }
 .brand-mark svg { transform: rotate(8deg); }
+.brand-mark img { width: 100%; height: 100%; object-fit: cover; transform: rotate(8deg) scale(1.35); }
 .brand-text { font-size: 1.12rem; }
 .brand-sub { color: #778183; font: 0.58rem var(--app-font-mono); letter-spacing: .11em; display: block; margin-top: 2px; }
 .desktop-nav { display: flex; align-items: center; gap: 25px; }
@@ -174,6 +175,8 @@ a { color: inherit; text-decoration: none; }
 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .person { overflow: hidden; border-radius: 17px; background: #f2f3ed; border: 1px solid #d3dad0; }
 .person-visual { position: relative; min-height: 300px; padding: 21px; overflow: hidden; background: #24333a; color: #ecf2e6; }
+.person-photo { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.person-visual-overlay { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(16,24,32,.05) 0%, rgba(16,24,32,.15) 55%, rgba(16,24,32,.82) 100%); }
 .person:nth-child(2) .person-visual { background: #66715e; }
 .person:nth-child(3) .person-visual { background: #c6c8b7; color: #101820; }
 .person-visual::before { content: ''; position: absolute; inset: auto -25% -35% 5%; height: 65%; border: 1px solid rgba(198,243,107,.5); border-radius: 50%; transform: rotate(-22deg); }
@@ -182,7 +185,7 @@ a { color: inherit; text-decoration: none; }
 .avatar-initial { position: absolute; z-index: 1; bottom: 20px; left: 20px; width: 75px; height: 75px; display: grid; place-items: center; border: 1px solid rgba(198,243,107,.5); border-radius: 50%; background: rgba(198,243,107,.13); color: #c6f36b; font-size: 1.7rem; font-weight: 700; letter-spacing: -.09em; }
 .person:nth-child(2) .avatar-initial { color: #f0a44a; border-color: rgba(240,164,74,.5); background: rgba(240,164,74,.13); }
 .person:nth-child(3) .avatar-initial { color: #101820; border-color: rgba(16,24,32,.35); background: rgba(16,24,32,.09); }
-.person-role { position: absolute; z-index: 1; bottom: 23px; right: 18px; max-width: 108px; text-align: right; font: .59rem/1.35 var(--app-font-mono); text-transform: uppercase; opacity: .7; }
+.person-role { position: absolute; z-index: 1; bottom: 23px; right: 18px; max-width: 108px; text-align: right; font: .59rem/1.35 var(--app-font-mono); text-transform: uppercase; opacity: .9; color: #ecf2e6; }
 .person-copy { padding: 20px 19px 23px; }
 .person-copy h3 { margin: 0 0 9px; font-size: 1.2rem; letter-spacing: -.05em; }
 .person-copy p { margin: 0; color: #657174; font-size: .79rem; line-height: 1.6; }
@@ -225,6 +228,7 @@ a { color: inherit; text-decoration: none; }
 .testimonial-card::before { content: '“'; position: absolute; top: -37px; right: 20px; color: #26363a; font: 15rem Georgia, serif; line-height: 1; }
 .testimonial-meta { position: relative; z-index: 1; display: flex; justify-content: space-between; align-items: center; color: #9cac9f; font: .65rem var(--app-font-mono); text-transform: uppercase; }
 .testimonial-body { position: relative; z-index: 1; max-width: 460px; color: #ecf2e6; font-size: clamp(1.3rem, 2.3vw, 2rem); line-height: 1.18; letter-spacing: -.05em; }
+.testimonial-image { display: block; max-width: 100%; max-height: 300px; border-radius: 12px; object-fit: contain; }
 .testimonial-link { position: relative; z-index: 1; display: inline-flex; width: fit-content; align-items: center; gap: 8px; color: #c6f36b; font: .73rem var(--app-font-mono); text-decoration: underline; text-underline-offset: 4px; }
 .testimonial-controls { display: flex; gap: 7px; }
 .circle-control { width: 35px; height: 35px; display: grid; place-items: center; border: 1px solid #66736a; border-radius: 50%; background: transparent; color: #ecf2e6; cursor: pointer; }
