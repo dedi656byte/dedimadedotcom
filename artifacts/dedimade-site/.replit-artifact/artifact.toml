@@ -21,15 +21,15 @@ publicDir = "artifacts/dedimade-site/dist/public"
 
 [[services.production.rewrites]]
 from = "/a-propos"
-to = "/index.html"
+to = "/about.html"
 
 [[services.production.rewrites]]
 from = "/contact"
-to = "/index.html"
+to = "/contact.html"
 
 [[services.production.rewrites]]
 from = "/confidentialite"
-to = "/index.html"
+to = "/confidentialite.html"
 
 [services.env]
 PORT = "18936"
